@@ -1,0 +1,22 @@
+<section class="todoapp">
+
+    <header class="header">
+        <h1>todos</h1>
+        <input #el class="new-todo" placeholder="What needs to be done?" autofocus [(ngModel)]="home"
+            (keyup.enter)="addTodo(home)">
+    </header>
+    <section class="main">
+        <ul class="todo-list">
+            <li *ngFor="let todo of getList(); let i = index" [class.completed]="todo.done">
+                <div class="view">
+                    <input type="checkbox" class="toggle" (click)="todo.toggleCompletion()" [checked]="todo.done">
+                    <label (dblclick)="edit(todo)">{{todo.getTitle()}}</label>
+                    <button class="destroy" (click)="cancel(i)"></button>
+                </div>
+                <input type="text" class="edit" #editedtodo *ngIf="todo.editing" [value]="todo.getTitle"
+                    (blur)="update(todo,editedtodo.value)" (keyup.enter)="update(todo,editedtodo.value)"
+                    (keyup.escape)="cancelEditing(todo)">
+            </li>
+        </ul>
+    </section>
+</section>
