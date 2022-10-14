@@ -1,0 +1,17 @@
+<h2>Power Boost Calculator</h2>
+<div>Normal power: <input [(ngModel)]="power"></div>
+<div>Boost factor: <input [(ngModel)]="factor"></div>
+<p>
+  Super Hero Power: {{power | exponentialStrength: factor}}
+</p>
+<p *appUnless="condition" class="unless a" appHighlight>
+    (A) This paragraph is displayed because the condition is false.
+  </p>
+  
+  <p *appUnless="!condition" class="unless b">
+    (B) Although the condition is true,
+    this paragraph is displayed because appUnless is set to false.
+  </p>
+  <p appHighlight highlightColor="yellow">Highlighted in yellow</p>
+<p appHighlight [highlightColor]="'orange'">Highlighted in orange</p>
+<!-- <p [appHighlight]="color">Highlight me!</p> -->

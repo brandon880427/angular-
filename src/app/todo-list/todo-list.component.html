@@ -1,0 +1,69 @@
+<section class="todoapp">
+
+    <header class="header">
+        <h1>todos</h1>
+        <input #el class="new-todo" placeholder="What needs to be done?" [(ngModel)]="home"
+            (keyup.enter)="addTodo(home);getList()">
+    </header>
+    <section class="main">
+        <ul class="todo-list">
+            <li *ngFor="let todo of getList() let i = index" [class.completed]="todo.done" >
+                <div class="view">
+                    <input type="checkbox" class="toggle" (click)="todo.toggleCompletion()" [checked]="todo.done" >
+                    <label (dblclick)="edit(todo)">{{todo.getTitle()}}</label>
+                    <button class="destroy" (click)="cancel(i)"></button>
+                </div>
+                <input type="text" class="edit" #editedtodo *ngIf="todo.editing" [value]="todo.getTitle()"
+                (blur)="update(todo,editedtodo.value)" (keyup.enter)="update(todo,editedtodo.value)"
+                (keyup.escape)="cancelEditing(todo)">
+            </li>
+        </ul>
+    </section>
+    <footer 
+    class="footer" 
+  >
+      <span class="todo-count">
+        <strong>{{ getRemainingList().length }}</strong> 
+        {{ getRemainingList().length > 1 ? 'items' : 'item'}} left
+      </span>
+    
+  <ul class="filters">
+
+    <li>
+      <a
+       href="javascript:;"
+       [class.selected]="checkStatus(todoStatusType.All)"
+       (click)="setStatus(todoStatusType.All)"
+      >
+        All
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="javascript:;"
+        [class.selected]="checkStatus(todoStatusType.Active)"
+        (click)="setStatus(todoStatusType.Active)"
+      >
+        Active
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="javascript:;"
+        [class.selected]="checkStatus(todoStatusType.Completed)"
+        (click)="setStatus(todoStatusType.Completed)"
+      >
+        Completed
+      </a>
+    </li>
+<button
+    class="clear-completed"
+    *ngIf="getCompletedList().length"
+    (click)="removeCompleted()">
+Clear completed
+</button>
+  </ul> 
+  </footer>
+</section>
