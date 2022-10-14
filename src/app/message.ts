@@ -8,4 +8,5 @@ export class Message {
     name:string;
     content:string;
     date:Date;
+    
 }
