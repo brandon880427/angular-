@@ -10,6 +10,10 @@ import { ExponentialStrengthPipe } from './ExponentialStrengthPipe';
 import { UnlessDirective } from './UnlessDirective';
 import { HightDirective } from './HighlightDirective';
 import { MessessageComponent } from './messessage/messessage.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
+import { FeatureModule } from './feature/feature.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,15 +21,17 @@ import { MessessageComponent } from './messessage/messessage.component';
     ExponentialStrengthPipe,
     UnlessDirective,
     HightDirective,
-    MessessageComponent
+    MessessageComponent,
+    HomeComponent,
+    LoginComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     TodoListModule,
     FormsModule,
-   
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
